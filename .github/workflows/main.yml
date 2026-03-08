@@ -3,24 +3,13 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
-        run: |
-          sudo apt update
-          sudo apt install -y build-essential git ffmpeg libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
-          sudo apt install -y libgstreamer1.0-gstreamer-lite1.0-dev libgstreamer-plugins-base1.0-dev openjdk-17-jdk zip unzip
-          pip install --user --upgrade buildozer cython virtualenv
-
       - name: Build with Buildozer
-        run: |
-          # إضافة مسار الأدوات يدوياً لضمان عدم حدوث خطأ Permission
-          export PATH=$PATH:~/.local/bin
-          buildozer android debug
+        # هذه النسخة محددة ومستقرة جداً وتتضمن الـ SDK داخلياً
+        uses: ArtemSBulgakov/buildozer-action@v1.6.1
+        with:
+          command: buildozer android debug
+          buildozer_version: master
