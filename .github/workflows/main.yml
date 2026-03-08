@@ -7,8 +7,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build with Buildozer
-        uses: ArtemSerebriakov/buildozer-action@v1.6.1
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          command: buildozer android debug
-          buildozer_version: master
+          python-version: '3.9'
+
+      - name: Install Buildozer
+        run: |
+          pip install --user --upgrade buildozer
+          pip install --user --upgrade Cython==0.29.33
+
+      - name: Build with Buildozer
+        run: |
+          # هذه الخطوة ستقوم بتثبيت التبعيات وبناء التطبيق
+          buildozer android debug
