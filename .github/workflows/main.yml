@@ -12,5 +12,3 @@ jobs:
         with:
           command: buildozer android debug
           buildozer_version: master
-          # هذا السطر يحل مشكلة الصلاحيات التي ظهرت في صورتك
-          repository_display_name: SamiVideo
