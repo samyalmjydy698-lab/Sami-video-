@@ -19,7 +19,7 @@ version = 0.1
 
 # (list) Application requirements
 # تأكد من إضافة المكتبات التي استخدمتها في AI Studio هنا
-requirements = python3,kivy,kivymd,google-generativeai,requests,urllib3
+requirements = python3,kivy,google-generativeai,requests,urllib3charset-normalizer, idna
 
 # (str) Supported orientations (landscape, portrait or all)
 orientation = portrait
@@ -44,3 +44,4 @@ android.archs = arm64-v8a
 
 # (bool) enables skip update render code (very important for some apps)
 android.skip_update = False
+
