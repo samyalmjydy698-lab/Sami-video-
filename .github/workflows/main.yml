@@ -8,8 +8,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        # هذه النسخة محددة ومستقرة جداً وتتضمن الـ SDK داخلياً
-        uses: ArtemSBulgakov/buildozer-action@v1.6.1
+        # استخدمنا v1 وهي النسخة المتاحة والصحيحة
+        uses: ArtemSBulgakov/buildozer-action@v1
         with:
           command: buildozer android debug
           buildozer_version: master
