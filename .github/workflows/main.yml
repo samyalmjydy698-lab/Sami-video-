@@ -7,9 +7,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install Buildozer dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y python3-pip build-essential git python3 python3-dev ffmpeg libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev
+          sudo apt install -y libgstreamer1.0-gstreamer-lite1.0-dev libgstreamer-plugins-base1.0-dev openjdk-17-jdk zip unzip
+          pip install --user --upgrade buildozer cython virtualenv
+
       - name: Build with Buildozer
-        # استخدمنا v1 وهي النسخة المتاحة والصحيحة
-        uses: ArtemSBulgakov/buildozer-action@v1
-        with:
-          command: buildozer android debug
-          buildozer_version: master
+        run: |
+          export PATH=$PATH:~/.local/bin
+          buildozer android debug
